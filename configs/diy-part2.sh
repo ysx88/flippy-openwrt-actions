@@ -22,9 +22,10 @@ cp -f $GITHUB_WORKSPACE/configs/bg1.jpg package/luci-theme-argon/htdocs/luci-sta
 cp -f $GITHUB_WORKSPACE/configs/banner package/base-files/files/etc/banner
 
 # 晶晨宝盒
-sed -i "s|https.*/amlogic-s9xxx-openwrt|https://github.com/ysx88/OpenWrt|g" package/luci-app-amlogic/root/etc/config/amlogic
-sed -i "s|http.*/library|https://github.com/ysx88/OpenWrt|g" package/luci-app-amlogic/root/etc/config/amlogic
-sed -i "s|ARMv8|ARMv8|g" package/luci-app-amlogic/root/etc/config/amlogic
+svn export https://github.com/ophub/luci-app-amlogic/trunk/luci-app-amlogic package/luci-app-amlogic
+sed -i "s|firmware_repo.*|firmware_repo 'https://github.com/ysx88/OpenWrt'|g" package/luci-app-amlogic/root/etc/config/amlogic
+# sed -i "s|kernel_path.*|kernel_path 'https://github.com/ysx88/kernel'|g" package/luci-app-amlogic/root/etc/config/amlogic
+sed -i "s|ARMv8|ARMv8_PLUS|g" package/luci-app-amlogic/root/etc/config/amlogic
 
 mkdir -p files/etc/openclash/core
 
